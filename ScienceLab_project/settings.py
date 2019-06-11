@@ -54,7 +54,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'ScienceLab_project.urls'
+ROOT_URLCONF = 'ScienceLab_Project.urls'
 
 TEMPLATES = [
     {
@@ -72,7 +72,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'ScienceLab_project.wsgi.application'
+WSGI_APPLICATION = 'ScienceLab_Project.wsgi.application'
 
 
 # Database
@@ -81,9 +81,9 @@ WSGI_APPLICATION = 'ScienceLab_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'ScienceLab',
-        'USER': 'ScienceLabuser',
-        'PASSWORD': 'ScienceLab',
+        'NAME': 'sciencelab',
+        'USER': 'sciencelabuser',
+        'PASSWORD': 'scienceLab',
         'HOST': 'localhost'
     }
 }
@@ -95,15 +95,6 @@ DATABASES = {
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
 
@@ -129,3 +120,9 @@ STATIC_URL = '/static/'
 
   
 django_heroku.settings(locals())
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+REACT_APP_DIR = os.path.join(BASE_DIR, 'client')
+
+STATICFILES_DIRS = [
+    os.path.join(REACT_APP_DIR, 'build', 'static')
+]

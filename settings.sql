@@ -1,3 +1,3 @@
-CREATE DATABASE ScienceLab;
-CREATE USER ScienceLabuser WITH PASSWORD 'ScienceLab';
-GRANT ALL PRIVILEGES ON DATABASE ScienceLab TO ScienceLabuser;
+CREATE DATABASE sciencelab;
+CREATE USER scienceLabuser WITH PASSWORD 'sciencelab';
+GRANT ALL PRIVILEGES ON DATABASE ScienceLab TO scienceLabuser;
