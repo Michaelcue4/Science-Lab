@@ -4,5 +4,5 @@ from .views import ScientistList, FormulaList, InstituteList
 router = routers.SimpleRouter()
 router.register('scientists', ScientistList)
 router.register('formulas', FormulaList)
-router.register('institutes', IntituteList)
+router.register('institutes', InstituteList)
 urlpatterns = router.urls
