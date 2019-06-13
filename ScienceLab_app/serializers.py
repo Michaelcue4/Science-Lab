@@ -21,5 +21,5 @@ class ScientistSerializer(serializers.HyperlinkedModelSerializer):
         model = Scientist
         fields = ('id', 'name', 'photo_url', 'formulas', 'institutes')
 
-class ChemicalSerializer(serializers.HyperlinkedModelSerializer):
-    fo
+# class ChemicalSerializer(serializers.HyperlinkedModelSerializer):
+    

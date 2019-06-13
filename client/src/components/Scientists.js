@@ -30,7 +30,7 @@ class Scientists extends Component{
         isscientistFormDisplayed: false 
         }
         componentDidMount = () => {
-            axios.get('api/scientists').then(res => {
+            axios.get('api/v1/scientists').then(res => {
                 this.setState({scientists: res.data})
             })
           }
@@ -49,7 +49,7 @@ class Scientists extends Component{
         createscientist = (e) => {
           e.preventDefault()
           axios
-              .post('api/v1/scientists', {
+              .post('api/v1/scientists/', {
                   name: this.state.newscientist.name,
               })
               .then(res => {
@@ -72,18 +72,35 @@ class Scientists extends Component{
             
             <div className ='Scientsts'>
                 <Menu>
-                <h1> Scientists  </h1>
-                <p> List of Individual Scientists and what kind of formulas they have created </p>
-                <div>
-                <Link to ="/"> Home </Link>
-                </div>
-                <div>
-                <Link to ="/Info"> Info </Link>
-                </div>
+                    <h1> Scientists  </h1>
+                    <p> List of Individual Scientists and what kind of formulas they have created </p>
+                    <div>
+                        <Link to ="/"> Home </Link>
+                    </div>
+                    <div>
+                        <Link to ="/Info"> Info </Link>
+                    </div>
                 </Menu>
+                {
+                     this.state.scientists.map(scientists => {
+                        return (
+                        <div className = 'middleName'>
+                        
+                            <div key={scientists._id}>
+                                <Link
+                                    to={`/api/v1/scientists/${scientists._id}`}
+                                >
+                                    {scientists.name}
+                                </Link>
+                            </div>
+                        </div>
+                        )
+                    })
+                }
             </div>
             
                 )
+                
             }
     
 }
