@@ -17,8 +17,13 @@ class Formula(models.Model):
         return self.name
 
 class Chemical(models.Model):
+    amount = models.PositiveIntegerField()
     name = models.CharField(max_length = 200)
-    
+    formula = models.ForeignKey(Formula, on_delete = models.CASCADE, related_name = 'chemical')
+
+    def __str__(self):
+        return self.name
+
 
 class Institute(models.Model):
     name = models.CharField(max_length = 200)

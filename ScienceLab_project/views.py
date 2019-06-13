@@ -4,7 +4,7 @@ import os
 from django.views.generic import View
 from django.http import HttpResponse
 from django.conf import settings
-import request
+import requests
 
 class FrontendAppView(View):
     """
@@ -27,6 +27,11 @@ class FrontendAppView(View):
                 status=501,
             )
 
-# def index(request):
-#     url = ""
+    def element(request):
+        url = "https://periodic-table-api.herokuapp.com/atomicName/{}"
+        name = "Mercury"
+        r = requests.get(url.format(name)).json()
+        print(r)
+
+        return (request)
 
