@@ -22,6 +22,25 @@ h1{
 }
 `
 class SingleScientist extends Component{
+    state = {
+        scientist: {
+          name:"",
+          photo_url:"",
+          formulas:[
+
+          ]
+        },
+        redirectToHome: false,
+        isEditFormDisplayed: false
+    }
+  
+    componentDidMount = () => {
+        axios.get(`/api/v1/scientist/${this.props.match.params.id}`).then(res => {
+            this.setState({scientists: res.data})
+
+        axios.g
+        })
+    }
     render() {
         
 

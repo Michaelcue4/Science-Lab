@@ -27,9 +27,14 @@ class ScientistSerializer(serializers.HyperlinkedModelSerializer):
         many=True,
         read_only=True
     )
+    institutes = serializers.HyperlinkedRelatedField(
+        view_name='institute-detail',
+        many=True,
+        read_only=True
+    )
     class Meta:
         model = Scientist
-        fields = ('id', 'name', 'photo_url','formulas')
+        fields = ('id', 'name', 'photo_url','formulas','institutes')
 
 
 # class ChemicalSerializer(serializers.HyperlinkedModelSerializer):
