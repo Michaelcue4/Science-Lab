@@ -20,3 +20,6 @@ class ScientistSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Scientist
         fields = ('id', 'name', 'photo_url', 'formulas', 'institutes')
+
+class ChemicalSerializer(serializers.HyperlinkedModelSerializer):
+    fo
