@@ -11,7 +11,7 @@ class Formula(models.Model):
     name = models.CharField(max_length = 200)
     symbol = models.CharField(max_length =100)
     atomic_number = models.PositiveIntegerField()
-    scientist = models.ForeignKey(Scientist,on_delete = models.CASCADE,related_name = 'formula')
+    scientist = models.ForeignKey(Scientist,on_delete = models.CASCADE,related_name = 'formulas')
 
     def __str__(self):
         return self.name
@@ -19,7 +19,7 @@ class Formula(models.Model):
 class Chemical(models.Model):
     amount = models.PositiveIntegerField()
     name = models.CharField(max_length = 200)
-    formula = models.ForeignKey(Formula, on_delete = models.CASCADE, related_name = 'chemical')
+    formula = models.ForeignKey(Formula, on_delete = models.CASCADE, related_name = 'chemicals')
 
     def __str__(self):
         return self.name
@@ -30,5 +30,7 @@ class Institute(models.Model):
     street = models.TextField()
     state = models.TextField()
     zipcode = models.PositiveIntegerField()
-    scientist = models.ForeignKey(Scientist,on_delete = models.CASCADE, related_name = 'institute')
+    scientist = models.ForeignKey(Scientist,on_delete = models.CASCADE, related_name = 'institutes')
 
+    def __str__(self):
+        return self.name

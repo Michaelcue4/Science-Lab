@@ -26,6 +26,7 @@ class Scientists extends Component{
         scientists: [],
         newscientist: {
             name: '',
+            photo_url: ''
         }, 
         isscientistFormDisplayed: false 
         }
@@ -51,13 +52,15 @@ class Scientists extends Component{
           axios
               .post('api/v1/scientists/', {
                   name: this.state.newscientist.name,
+                  photo_url: this.state.newscientist.photo_url
               })
               .then(res => {
                   const scientistList = [...this.state.scientists]
                   scientistList.unshift(res.data)
                   this.setState({
                       newscientist: {
-                          name: ''
+                          name: '',
+                          photo_url: ''
                       },
                       isscientistFormDisplayed: false,
                       scientists: scientistList
@@ -88,7 +91,7 @@ class Scientists extends Component{
                         
                             <div key={scientists._id}>
                                 <Link
-                                    to={`/api/v1/scientists/${scientists._id}`}
+                                    to={`/api/v1/scientists/${scientists.id}`}
                                 >
                                     {scientists.name}
                                 </Link>
@@ -96,9 +99,39 @@ class Scientists extends Component{
                         </div>
                         )
                     })
-                }
+                } <div className = 'button'>
+                <button onClick={this.togglescientistForm}> Add Scientist </button>
+                {
+                    this.state.isscientistFormDisplayed
+                        ? <form onSubmit={this.createscientist}>
+                            <div>
+                                <label htmlFor ="name"> Name </label>
+                                <input
+                                    id="name"
+                                    type="text"
+                                    name="name"
+                                    onChange={this.handleChange}
+                                    value={this.state.newscientist.name}
+                                />
+                                <div>
+                            <label htmlFor="photo_url">Add Photo</label>
+                            <input
+                                id="photo_url"
+                                type="text"
+                                name="photo_url"
+                                onChange={this.handleChange}
+                                value={this.state.newscientist.photo_url}
+                            />
+                        </div>
+                            </div>
+                            
+                            <button>Create</button> 
+                        </form>
+                       
+                        
+                        : null
+                } </div>
             </div>
-            
                 )
                 
             }
