@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Menu = styled.div`
@@ -26,22 +26,29 @@ class SingleScientist extends Component{
         scientist: {
           name:"",
           photo_url:"",
-          formulas:[
+          formulas:[],
+          institutes:[]
 
-          ]
         },
         redirectToHome: false,
         isEditFormDisplayed: false
     }
   
     componentDidMount = () => {
-        axios.get(`/api/v1/scientist/${this.props.match.params.id}`).then(res => {
-            this.setState({scientists: res.data})
+        axios.get(`/api/v1/scientists/${this.props.match.params.id}`).then(res => {
+            this.setState({scientist: res.data})
 
-        axios.g
+        })
+    }
+    deleteScientist = () => {
+        axios.delete(`/api/v1/scientists/${this.props.match.params.id}`).then(res => {
+            this.setState({redirectToHome: true})
         })
     }
     render() {
+        if(this.state.redirectToHome) {
+            return (<Redirect to="/api/v1/Scientists" />)
+        }
         
 
         return (
@@ -60,6 +67,11 @@ class SingleScientist extends Component{
                 <Link to ="/Info"> Info </Link>
                 </div>
                 </Menu>
+                <div>{this.state.scientist.name}</div>
+                <div>{this.state.scientist.photo_url}</div>
+                <div>{this.state.scientist.formulas}</div>
+                <div>{this.state.scientist.institutes}</div>
+                <button onClick={this.deleteScientist}>Delete</button>
             </div>
             
                 )

@@ -22,16 +22,8 @@ class InstituteSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class ScientistSerializer(serializers.HyperlinkedModelSerializer):
-    formulas = serializers.HyperlinkedRelatedField(
-        view_name='formula-detail',
-        many=True,
-        read_only=True
-    )
-    institutes = serializers.HyperlinkedRelatedField(
-        view_name='institute-detail',
-        many=True,
-        read_only=True
-    )
+    formulas = serializers.StringRelatedField(many=True)
+    institutes = serializers.StringRelatedField(many=True)
     class Meta:
         model = Scientist
         fields = ('id', 'name', 'photo_url','formulas','institutes')
