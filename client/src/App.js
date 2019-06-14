@@ -6,6 +6,8 @@ import Home from './components/Home.js';
 import Info from './components/Info.js';
 import Scientists from './components/Scientists.js';
 import SingleScientist from './components/SingleScientist.js';
+import SingleFormula from './components/SingleFormula.js';
+import Institute from './components/Institute.js';
 import './App.css';
 
 class App extends Component{
@@ -20,6 +22,8 @@ class App extends Component{
         <Route exact path = "/Info" component = {Info}/>
         <Route exact path = "/Scientists" component = {Scientists}/>
         <Route exact path = "/api/v1/scientists/:id" component = {SingleScientist}/>
+        <Route exact path = "/formulas/:id" component = {SingleFormula}/>
+        <Route exact path = "/institutes/:id" component = {Institute}/>
       </Switch>
       
     </div>

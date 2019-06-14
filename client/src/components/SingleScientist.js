@@ -67,11 +67,39 @@ class SingleScientist extends Component{
                 <Link to ="/Info"> Info </Link>
                 </div>
                 </Menu>
-                <div>{this.state.scientist.name}</div>
-                <div>{this.state.scientist.photo_url}</div>
-                <div>{this.state.scientist.formulas}</div>
-                <div>{this.state.scientist.institutes}</div>
-                <button onClick={this.deleteScientist}>Delete</button>
+                <div>
+                <h2>{this.state.scientist.name}</h2>
+                </div>
+                <div>
+                <img src ={this.state.scientist.photo_url}></img></div>
+                <h3>Formulas</h3>
+                <div>
+                     <ul>
+                    {this.state.scientist.formulas.map(formula => (
+                        <li>
+                        <Link to={`/formulas/${formula.id}`}>{formula.name}</Link>
+                        </li>
+                    ))}
+                    </ul>
+                    
+                </div>
+                <div>
+                    {/* <Link to = "/institue/:id">
+                        {this.state.scientist.institutes}
+                    </Link> */}
+                </div>
+                <h4>Institutes</h4>
+                <div>
+                     <ul>
+                    {this.state.scientist.institutes.map(institute => (
+                        <li>
+                        <Link to={`/institutes/${institute.id}`}>{institute.name}</Link>
+                        </li>
+                    ))}
+                    </ul>
+                    
+                </div>
+                <button onClick={this.deleteScientist}>Delete Information </button>
             </div>
             
                 )

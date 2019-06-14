@@ -31,7 +31,25 @@ class FrontendAppView(View):
         url = "https://periodic-table-api.herokuapp.com/atomicName/{}"
         name = "Mercury"
         r = requests.get(url.format(name)).json()
-        print(r)
+        
+        # element_data = {
+        #     "name": elementName ,
+        #     "atomicNumber": ,
+        #     # "atomicMass": ,
+        #     # "atomicRadius": ,
+        #     # "boilingPoint": "",
+        #     # "density": "",
+        #     # "electronAffinity": "",
+        #     # "electronegativity": "",
+        #     # "groupBlock": "",
+        #     # "ionRadius": "",
+        #     # "meltingPoint": "",
+        #     # "oxidationStates": "",
+        #     # "standardState": "",
+        #     # "symbol": "",
+        #     # "yearDiscovered": ""
+
+        # }
 
         return (request)
 
