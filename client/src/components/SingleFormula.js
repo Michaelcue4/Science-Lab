@@ -72,7 +72,9 @@ class SingleFormula extends Component{
                 </Menu>
                 <h3>{this.state.formula.name}</h3>
                 <div>
-                {/* <Link to={`/formulas/`}> */}
+                <Link to={`/elements/${this.state.formula.atomic_name}`}> 
+                {this.state.formula.atomic_name}
+                </Link>
                 <p>
                 {this.state.formula.symbol}
                 </p>
