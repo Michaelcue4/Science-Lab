@@ -30,4 +30,10 @@ class ScientistSerializer(serializers.HyperlinkedModelSerializer):
 
 
 # class ChemicalSerializer(serializers.HyperlinkedModelSerializer):
+#     formula = serializers.PrimaryKeyRelatedField(
+#         queryset = Formula.objects.all()
+#     )
+#     class Meta:
+#         model = Chemical
+#         fields = ("id", "name", "symbol", )
     

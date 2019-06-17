@@ -10,19 +10,18 @@ class Scientist(models.Model):
 class Formula(models.Model):
     name = models.CharField(max_length = 200)
     symbol = models.CharField(max_length =100)
-    atomic_number = models.PositiveIntegerField()
+    atomic_name = models.CharField(max_length = 200)
     scientist = models.ForeignKey(Scientist,on_delete = models.CASCADE,related_name = 'formulas')
 
     def __str__(self):
-        return self.name
+        return f"{self.name, self.atomic_name}"
 
-class Chemical(models.Model):
-    amount = models.PositiveIntegerField()
-    name = models.CharField(max_length = 200)
-    formula = models.ForeignKey(Formula, on_delete = models.CASCADE, related_name = 'chemicals')
+# class Element(models.Model):
+#     name = models.CharField(max_length = 200)
+#     formula = models.ForeignKey(Formula, on_delete = models.CASCADE, related_name = 'elements')
 
-    def __str__(self):
-        return self.name
+#     def __str__(self):
+#         return self.name
 
 
 class Institute(models.Model):
