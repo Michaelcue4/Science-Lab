@@ -24,7 +24,14 @@ h1{
 class SingleFormula extends Component{
     state = {
         formula: {
-          name:""
+          name:"",
+          atomic_name:"",
+          symbol:"",
+        },
+        newElement:{
+            atomic_name:"",
+            symbol:""
+
         },
         redirectToHome: false,
         isEditFormDisplayed: false
@@ -63,11 +70,17 @@ class SingleFormula extends Component{
                 <Link to ="/Info"> Info </Link>
                 </div>
                 </Menu>
-                <div>{this.state.formula.name}</div>
-                <h3>Formulas</h3>
-                <div>{this.state.formulas}</div>
+                <h3>{this.state.formula.name}</h3>
+                <div>
+                {/* <Link to={`/formulas/`}> */}
+                <p>
+                {this.state.formula.symbol}
+                </p>
+                </div>
+
+                
                 <button onClick={this.deleteScientist}>Delete Information </button>
-                <div><Link to ="/Scientists"> Scientist </Link></div>
+                <div><Link to ="/Scientists"> View Scientist </Link></div>
             </div>
             
                 )

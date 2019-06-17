@@ -26,7 +26,9 @@ class Scientists extends Component{
         scientists: [],
         newscientist: {
             name: '',
-            photo_url: ''
+            photo_url: '',
+            formulas:[],
+            institutes:[]
         }, 
         isscientistFormDisplayed: false 
         }

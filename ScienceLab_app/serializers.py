@@ -9,7 +9,7 @@ class FormulaSerializer(serializers.HyperlinkedModelSerializer):
     )
     class Meta:
         model = Formula
-        fields = ('id', 'name', 'symbol', 'atomic_number', 'scientist')
+        fields = ('id', 'name', 'symbol', 'atomic_name', 'scientist')
 
 class InstituteSerializer(serializers.HyperlinkedModelSerializer):
     scientist = serializers.PrimaryKeyRelatedField(
