@@ -45,6 +45,11 @@ class SingleScientist extends Component{
             this.setState({redirectToHome: true})
         })
     }
+    handleChange = (e) => {
+        const cloneNewscientist = {...this.state.newscientist}
+        cloneNewscientist[e.target.name] = e.target.value
+        this.setState({newscientist: cloneNewscientist})
+      }
     render() {
         if(this.state.redirectToHome) {
             return (<Redirect to="/api/v1/Scientists" />)

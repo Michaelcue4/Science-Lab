@@ -40,6 +40,7 @@ class Scientists extends Component{
                 return ({isscientistFormDisplayed: !state.isscientistFormDisplayed})
             })
         }
+        
       
         handleChange = (e) => {
           const cloneNewscientist = {...this.state.newscientist}
