@@ -23,9 +23,9 @@ class App extends Component{
         <Route exact path = "/Info" component = {Info}/>
         <Route exact path = "/Scientists" component = {Scientists}/>
         <Route exact path = "/api/v1/scientists/:id" component = {SingleScientist}/>
-        <Route exact path = "/formulas/:id" component = {SingleFormula}/>
+        <Route exact path = "/formulas/:id" component = {SingleFormula }/>
         <Route exact path = "/institutes/:id" component = {Institute}/>
-        <Route exact path = "/elements/<atomic_name>" component = {ElementDetail}/>
+        <Route exact path = "/elements/:atomic_name" component = {ElementDetail}/>
       </Switch>
       
     </div>

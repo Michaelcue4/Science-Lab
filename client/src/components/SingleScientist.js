@@ -36,8 +36,15 @@ class SingleScientist extends Component {
         newformula: [{
             name:"test"
         }],
+        newinstitute:[{
+            name:"",
+            street:"",
+            state:"",
+            zipcode:"",
+        }],
         redirectToHome: false,
         isformulaFormDisplayed: false,
+        isinstituteFormDisplayed: false,
         isEditFormDisplayed: false
     }
 
@@ -51,6 +58,11 @@ class SingleScientist extends Component {
     toggleformulaForm = () => {
         this.setState((state, props) => {
             return ({isformulaFormDisplayed: !state.isformulaFormDisplayed})
+        })
+    }
+    toggleinstituteForm = () => {
+        this.setState((state, props) => {
+            return ({isinstituteFormDisplayed: !state.isinstituteFormDisplayed})
         })
     }
     deleteScientist = () => {
@@ -77,11 +89,38 @@ class SingleScientist extends Component {
             })
 
     }
+    createInstitute = (e) => {
+        e.preventDefault()
+        const institute = {...this.state.newinstitute}
+        institute.scientist = this.state.scientist.id;
+        console.log(this.state.newinstitute)
+        axios
+            .post(`/api/v1/institutes/`, institute)
+            .then(res => {
+                const scientist = {...this.state.scientist}
+                scientist.institutes.unshift(res.data)
+                this.setState({
+                    newinstitute: {
+                        name: ''
+                    },
+                    isformulaFormDisplayed: false,
+                    scientist
+                })
+            })
+
+    }
     handleChange = (e) => {
         const cloneNewformula = { ...this.state.newformula }
         cloneNewformula[e.target.name] = e.target.value
         this.setState({ newformula: cloneNewformula })
         console.log(this.state.newformula)
+    }
+    handleInstituteChange = (e) => {
+        console.log(e.target.name)
+        const cloneNewinstitute = { ...this.state.newinstitute }
+        cloneNewinstitute[e.target.name] = e.target.value
+        this.setState({ newinstitute: cloneNewinstitute })
+        //console.log(this.state.newinstitute)
     }
     render() {
         console.log(this.state.scientist.formulas)
@@ -173,7 +212,55 @@ class SingleScientist extends Component {
                             </li>
                         ))}
                     </ul>
-
+                    <button onClick={this.toggleinstituteForm}> Add  </button>
+                {
+                    this.state.isinstituteFormDisplayed
+                        ? <form onSubmit={this.createInstitute}>
+                            <div>
+                                <label htmlFor="name"> Institute Name </label>
+                                <input
+                                    id="name"
+                                    type="text"
+                                    name="name"
+                                    onChange={this.handleInstituteChange}
+                                    placeholder={this.state.newinstitute.name}
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor="name"> Street </label>
+                                <input
+                                    id="street"
+                                    type="text"
+                                    name="street"
+                                    onChange={this.handleInstituteChange}
+                                    placeholder={this.state.newinstitute.name}
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor="name"> State </label>
+                                <input
+                                    id="state"
+                                    type="text"
+                                    name="state"
+                                    onChange={this.handleInstituteChange}
+                                    placeholder={this.state.newinstitute.name}
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor="name"> Zipcode </label>
+                                <input
+                                    id="zipcode"
+                                    type="text"
+                                    name="zipcode"
+                                    onChange={this.handleInstituteChange}
+                                    placeholder={this.state.newinstitute.name}
+                                />
+                            </div>
+                            
+                            <button>Add Institutes </button>
+                        </form>
+                        : null
+                    } 
                 </div>
                 <button onClick={this.deleteScientist}>Delete Information </button>
             </div>
