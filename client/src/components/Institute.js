@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import styled from 'styled-components';
 
 const Menu = styled.div`
@@ -22,15 +22,38 @@ h1{
 }
 `
 class Institute extends Component{
+    state = {
+        institute: 
+        {
+            name:"",
+            street:"",
+            state:"",
+            zipcode:""
+                
+        },
+        redirectToHome: false,
+    }
+    componentDidMount = () => {
+        axios.get(`/api/v1/institutes/${this.props.match.params.id}`).then(res=>{
+            this.setState({institute:res.data})
+        })
+    }
+    deleteScientist = () => {
+        axios.delete(`/api/v1/institutes/${this.props.match.params.id}`).then(res => {
+            this.setState({redirectToHome: true})
+        })
+    }
     render() {
-        
+        if(this.state.redirectToHome) {
+            return (< Redirect to="/Scientists" />)
+        }
 
         return (
-            
+            <div>
             <div className ='Info'>
                 <Menu>
-                <h1> Information </h1>
-                <p> This was created for the purpose to display and show the constructs of each formula</p>
+                <h1> Institution </h1>
+                <p> Name of the Reasearch Institution to give Credits </p>
                 <div>
                 <Link to ="/"> Home </Link>
                 </div>
@@ -39,7 +62,13 @@ class Institute extends Component{
                 </div>
                 </Menu>
             </div>
-            
+                <p>Institute :{this.state.institute.name}</p>
+                    <p>Street :{this.state.institute.street}</p>
+                    <p>State :{this.state.institute.state}</p>
+                    <p>Zipcode :{this.state.institute.zipcode}</p>
+                    <button onClick={this.deleteScientist}>Delete Information </button>
+            </div>
+        
                 )
             }
     

@@ -50,7 +50,7 @@ class SingleFormula extends Component{
     }   ; 
     render() {
         if(this.state.redirectToHome) {
-            return (<Redirect to="/api/v1/Scientists" />)
+            return (< Redirect to="/Scientists" />)
         }
         
 
