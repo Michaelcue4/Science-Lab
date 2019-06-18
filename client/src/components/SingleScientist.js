@@ -210,6 +210,7 @@ class SingleScientist extends Component {
                 </div>
               
                 <div>
+                <button onClick={this.toggleformulaForm}>Create</button>
                 {
                     this.state.isformulaFormDisplayed
                         ? <form onSubmit={this.createFormula}>
