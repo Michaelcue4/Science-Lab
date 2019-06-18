@@ -15,4 +15,4 @@ Trello ,
 (https://test466464.herokuapp.com/)
 
 # WireFrame
-![Picture](IMG_1389.JPG)
+![Picture](https://imgur.com/a/BcWS71F)
