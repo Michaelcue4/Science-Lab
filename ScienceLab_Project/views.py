@@ -1,9 +1,9 @@
-import logging
+mport logging
 import os
+
 from django.views.generic import View
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse
 from django.conf import settings
-import requests
 
 class FrontendAppView(View):
     """
@@ -25,33 +25,3 @@ class FrontendAppView(View):
                 """,
                 status=501,
             )
-
-    def element(request,element):
-        url = "https://periodic-table-api.herokuapp.com/atomicName/{element}"
-        # element = "Mercury"
-       
-        # elements = Chemical.objects.all()
-        # element_data = []
-        # for element in elements:
-        #     r = requests.get(url.format(name)).json()
-        # element_data = {
-        #     "name": elementName ,
-        #     "atomicNumber": ,
-        #     "atomicMass": ,
-        #     "atomicRadius": ,
-        #     "boilingPoint": "",
-        #     "density": "",
-        #     "electronAffinity": "",
-        #     "electronegativity": "",
-        #     "groupBlock": "",
-        #     "ionRadius": "",
-        #     "meltingPoint": "",
-        #     "oxidationStates": "",
-        #     "standardState": "",
-        #     "symbol": "",
-        #     "yearDiscovered": ""
-
-        # }
-
-        return (request)
-
