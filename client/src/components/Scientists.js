@@ -70,7 +70,7 @@ class Scientists extends Component{
                   })
               })
       
-        }
+            }
     render() {
         
 

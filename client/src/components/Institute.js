@@ -62,7 +62,7 @@ class Institute extends Component{
                 </div>
                 </Menu>
             </div>
-                <p>Institute :{this.state.institute.name}</p>
+                <h1>{this.state.institute.name}</h1>
                     <p>Street :{this.state.institute.street}</p>
                     <p>State :{this.state.institute.state}</p>
                     <p>Zipcode :{this.state.institute.zipcode}</p>

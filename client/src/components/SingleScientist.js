@@ -60,6 +60,12 @@ class SingleScientist extends Component {
             return ({isformulaFormDisplayed: !state.isformulaFormDisplayed})
         })
     }
+
+    toggleEditForm = () => {
+        this.setState((state, props) => {
+            return {isEditFormDisplayed: !state.isEditFormDisplayed}
+        })
+    }
     toggleinstituteForm = () => {
         this.setState((state, props) => {
             return ({isinstituteFormDisplayed: !state.isinstituteFormDisplayed})
@@ -122,6 +128,23 @@ class SingleScientist extends Component {
         this.setState({ newinstitute: cloneNewinstitute })
         //console.log(this.state.newinstitute)
     }
+    handleScientistupdate = (e)=>{
+        const cloneScientist = {...this.state.scientist}
+        cloneScientist[e.target.name] = e.target.value
+        this.setState({scientist: cloneScientist})
+
+    }
+    updateScientist = (e) => {
+        e.preventDefault()
+        axios
+          .put(`/api/v1/scientists/${this.props.match.params.id}/`, {
+              name: this.state.scientist.name,
+              photo_url: this.state.scientist.photo_url
+          })
+          .then(res => {
+              this.setState({scientist: res.data, isEditFormDisplayed: false})
+          })
+    }
     render() {
         console.log(this.state.scientist.formulas)
         if (this.state.redirectToHome) {
@@ -130,27 +153,47 @@ class SingleScientist extends Component {
 
 
         return (
-
-            <div className='SingleScientist'>
-                <Menu>
-                    <h1> Single Scientist Information </h1>
-                    <p> Published Formulas </p>
-                    <div>
-                        <Link to="/"> Home </Link>
-                    </div>
-                    <div>
-                        <Link to="/Scientists"> Scientist </Link>
-                    </div>
-                    <div>
-                        <Link to="/Info"> Info </Link>
-                    </div>
-                </Menu>
-                <div>
+            <div>
+                <div className='SingleScientist'>
+                    <Menu>
+                        <h1> Single Scientist Information </h1>
+                        <p> Published Formulas </p>
+                        <div>
+                            <Link to="/"> Home </Link>
+                        </div>
+                        <div>
+                            <Link to="/Scientists"> Scientist </Link>
+                        </div>
+                        <div>
+                            <Link to="/Info"> Info </Link>
+                        </div>
+                    </Menu>
+                </div>
                     <h2>{this.state.scientist.name}</h2>
-                </div>
-                <div>
                     <img src={this.state.scientist.photo_url}></img>
-                </div>
+                    <button onClick={this.toggleEditForm}>Edit</button>
+                    {
+                        this.state.isEditFormDisplayed
+                            ? <form onSubmit={this.updateScientist}>
+                                    <label htmlFor="name">Name</label>
+                                    <input
+                                        id="name"
+                                        type="text"
+                                        name="name"
+                                        onChange={this.handleScientistupdate}
+                                        value={this.state.scientist.name}
+                                    />
+                                    <label htmlFor="name"> Photo </label>
+                                    <input 
+                                        id="photo_url"
+                                        type="text"
+                                        name="photo_url"
+                                        onChange={this.handleScientistupdate}
+                                        value={this.state.scientist.name}
+                                        />
+                                <button>Update</button>
+                            </form>: null
+                    }
                 <h3>Formulas</h3>
                 <div>
                     <ul>
@@ -161,7 +204,8 @@ class SingleScientist extends Component {
                         ))}
                     </ul>
                 </div>
-                <button onClick={this.toggleformulaForm}> Add  </button>
+              
+                <div>
                 {
                     this.state.isformulaFormDisplayed
                         ? <form onSubmit={this.createFormula}>
@@ -199,7 +243,8 @@ class SingleScientist extends Component {
                             <button>Add Formula</button>
                         </form>
                         : null
-                    }              
+                    }
+                    </div>              
                         <div>
                 </div>
                     <h4>Institutes</h4>
@@ -261,10 +306,10 @@ class SingleScientist extends Component {
                         </form>
                         : null
                     } 
-                </div>
+                
                 <button onClick={this.deleteScientist}>Delete Information </button>
             </div>
-
+        </div>
         )
     }
 
