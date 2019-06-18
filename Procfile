@@ -1,1 +1,1 @@
-web: gunicorn ScienceLab_project.wsgi --log-file -
+web: gunicorn Science-Lab.wsgi --log-file -
