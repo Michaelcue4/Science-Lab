@@ -31,3 +31,23 @@
     transform: rotate(360deg);
   }
 }
+
+body{
+  background-image: url(https://www.iamag.co/wp-content/uploads/2018/05/sergey-grechanyuk-sci-fi-lab-concept-design-07-final-smaller.jpg)
+}
+.text_wrapper{
+text-decoration:none;
+color:inherit;
+color:white;
+text-shadow:
+		-1px -1px 0 #000,
+		1px -1px 0 #000,
+		-1px 1px 0 #000,
+		1px 1px 0 #000;
+}
+.img_size{
+  object-fit: none;
+}
+img{
+  max-width: 100%;
+}

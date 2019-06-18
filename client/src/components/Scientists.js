@@ -2,10 +2,18 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components';
+const Button = styled.button`
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.25em 1em;
+  border-radius: 3px;
+  color: ${props => props.theme.main};
+  border: 2px solid ${props => props.theme.main};
+`;
 
 const Menu = styled.div`
 width:500px;
-color: Red;
+color: white;
 padding: 6px
 text-align: center
 border-bottom: 2px solid red
@@ -18,9 +26,15 @@ text-shadow:
 h1{
     font-size: 60px
     
-    color:yellow
+    color:white
 }
+
 `
+Button.defaultProps = {
+    theme: {   main: "white"
+}
+}
+   
 class Scientists extends Component{
     state = {
         scientists: [],
@@ -90,7 +104,7 @@ class Scientists extends Component{
                 {
                      this.state.scientists.map(scientists => {
                         return (
-                        <div className = 'middleName'>
+                        <div className = 'text_wrapper'>
                         
                             <div key={scientists._id}>
                                 <Link

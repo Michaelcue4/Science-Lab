@@ -5,10 +5,10 @@ import styled from 'styled-components';
 
 const Menu = styled.div`
 width:500px;
-color: Red;
+color: white;
 padding: 6px
-text-align: center
-border-bottom: 2px solid red
+border: 2px;
+text-align: right;
 font-size:20px
 text-shadow:
 		-1px -1px 0 #000,
@@ -17,8 +17,8 @@ text-shadow:
 		1px 1px 0 #000;
 h1{
     font-size: 60px
-    
-    color:yellow
+    text-align:right;
+    color:white
 }
 `
 class Home extends Component{

@@ -156,7 +156,7 @@ class SingleScientist extends Component {
             <div>
                 <div className='SingleScientist'>
                     <Menu>
-                        <h1> Single Scientist Information </h1>
+                        <h1> Scientist Information </h1>
                         <p> Published Formulas </p>
                         <div>
                             <Link to="/"> Home </Link>
@@ -169,8 +169,12 @@ class SingleScientist extends Component {
                         </div>
                     </Menu>
                 </div>
+                    <div className = 'text_wrapper'>
                     <h2>{this.state.scientist.name}</h2>
+                    <div className = 'img_size'>
                     <img src={this.state.scientist.photo_url}></img>
+                    </div>
+                    </div>
                     <button onClick={this.toggleEditForm}>Edit</button>
                     {
                         this.state.isEditFormDisplayed
@@ -261,7 +265,7 @@ class SingleScientist extends Component {
                 {
                     this.state.isinstituteFormDisplayed
                         ? <form onSubmit={this.createInstitute}>
-                            <div>
+                            <div className = "text_wrapper">
                                 <label htmlFor="name"> Institute Name </label>
                                 <input
                                     id="name"
