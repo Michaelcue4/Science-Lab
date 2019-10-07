@@ -70,8 +70,9 @@ class SingleFormula extends Component{
                 <Link to ="/Info"> Info </Link>
                 </div>
                 </Menu>
-                <h3>{this.state.formula.name}</h3>
-                <div>
+                
+                <div className = 'apicolor'>
+                    <h3>{this.state.formula.name}</h3>
                 <Link to={`/elements/${this.state.formula.atomic_name}`}>
                     {this.state.formula.atomic_name}
                     </Link> 

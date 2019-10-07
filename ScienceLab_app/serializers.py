@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from .models import Scientist, Formula, Institute
 
-
+# Created a Serializer for various classes 
 
 class FormulaSerializer(serializers.HyperlinkedModelSerializer):
     scientist = serializers.PrimaryKeyRelatedField(
@@ -29,11 +29,5 @@ class ScientistSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('id', 'name', 'photo_url','formulas','institutes')
 
 
-# class ChemicalSerializer(serializers.HyperlinkedModelSerializer):
-#     formula = serializers.PrimaryKeyRelatedField(
-#         queryset = Formula.objects.all()
-#     )
-#     class Meta:
-#         model = Chemical
-#         fields = ("id", "name", "symbol", )
+
     

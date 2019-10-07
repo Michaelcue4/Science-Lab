@@ -63,7 +63,7 @@ class ElementDetail extends Component{
                     </Menu>
                 </div>
                 
-                <div>
+                <div className = 'apicolor'>
                     <ul>
                     <li>Name : {this.state.element.name}</li>
                     <li>Symbol: {this.state.element.symbol}</li>

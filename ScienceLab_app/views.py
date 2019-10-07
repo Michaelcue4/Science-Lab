@@ -22,8 +22,3 @@ class ElementList(viewsets.ViewSet):
      def list(self, request, atomic_name):
         results = requests.get(f'https://periodic-table-api.herokuapp.com/atomicName/{atomic_name}').json()
         return Response(results)
-# def ElementView(request,atomic_name):
-#     # url = "https://periodic-table-api.herokuapp.com/atomicName/{element}"
-
-#     r = request.get(f"https://periodic-table-api.herokuapp.com/atomicName/{atomic_name}")
-#     return HttpResponse(r, content_type = 'application/json')
